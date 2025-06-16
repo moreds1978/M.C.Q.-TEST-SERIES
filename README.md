@@ -107,56 +107,6 @@
         </form>
         <div id="result"></div>
     </div>
-
-    <script>
-        // Timer functionality
-        let timeLeft = 600; // 10 minutes in seconds
-        const timerDisplay = document.getElementById('timer');
-        const submitBtn = document.getElementById('submit-btn');
-        const quizForm = document.getElementById('quiz-form');
-        const resultDiv = document.getElementById('result');
-
-        function updateTimer() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                submitQuiz();
-            }
-            timeLeft--;
-        }
-
-        const timer = setInterval(updateTimer, 1000);
-
-        // Quiz submission
-        submitBtn.addEventListener('click', submitQuiz);
-
-        function submitQuiz() {
-            clearInterval(timer);
-            const answers = {
-                q1: 'a', // Correct answer for Q1
-                q2: 'b', // Correct answer for Q2
-                q3: 'b'  // Correct answer for Q3
-            };
-            let score = 0;
-            const formData = new FormData(quizForm);
-
-            for (let [question, correctAnswer] of Object.entries(answers)) {
-                const userAnswer = formData.get(question);
-                if (userAnswer === correctAnswer) {
-                    score++;
-                }
-            }
-
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = `Your Score: ${score} out of ${Object.keys(answers).length}`;
-            submitBtn.disabled = true;
-
-            // Disable all radio buttons after submission
-            const radios = quizForm.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => radio.disabled = true);
-        }
-    </script>
+   </script>
 </body>
 </html>
