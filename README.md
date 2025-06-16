@@ -58,29 +58,3 @@
   </form>
 
   <div id="result"></div>
-
-  <script>
-    function submitQuiz() {
-      const answers = {
-        q1: 'C',
-        q2: 'C',
-        q3: 'B'
-      };
-      
-      let score = 0;
-      let total = Object.keys(answers).length;
-      
-      for (let q in answers) {
-        let selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) {
-          score++;
-        }
-      }
-
-      document.getElementById('result').innerText =
-        `You scored ${score} out of ${total}`;
-    }
-  </script>
-
-</body>
-</html>
